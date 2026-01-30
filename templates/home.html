@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My website</title>
+    <style>
+         body{
+            height: 100%;
+            margin: 0;
+            overflow: hidden; 
+         }
+        
+        body{
+            background-image: url("{{url_for('static' , filename='wallpaper.jpg')}}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        button{
+            width:150px;
+            height: 40px;
+            font-size: large;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family:'Times New Roman', Times, serif;
+        }
+
+        button:hover{
+            background-color: darkblue;
+            color: white;
+        }
+
+        
+    </style>
+</head>
+<body>
+         
+       
+        <div style="text-align: center; margin-top: 200px;">
+             <h1 style="color: white;">Welcome To Flask </h1>
+        <a href="/login"><button>Login</button></a>
+        <a href="/signup"><button>Signup</button></a>
+         </div>
+    
+
+</body>
+</html>
