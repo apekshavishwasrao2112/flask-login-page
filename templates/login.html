@@ -1,134 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+
     <style>
-        #div1 {
-        height: 320px;
-        width: 300px;    
-        margin: auto;
-        margin-top: 120px;
-        border: 2px solid black; 
-        border-radius: 5px;
-        background-color: rgb(251, 255, 255); 
-          
-        }
-        input{
-           
-            text-decoration: none;
-            border-color: black;
-            width: 250px;
-            height: 20px;
-            margin: 5px;
-            border-radius: 3px;
-        }
-        input:focus{
-            outline: auto;
-        }
-       
-
-        #div3{
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr ;
-            row-gap: 20px;
-            margin: 25px;
-        }
-
-        #but{
-            cursor: pointer;
-            width: 190px;
-            height: 30px;
-            border: 2px solid black;
-            border-radius: 5px;
-            font-size: 13px;
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             font-family: 'Times New Roman', Times, serif;
-            font-weight: bold;
-            margin-top: 5px;
-            margin-left: 670px;
-           
-            
+            background-color: #f4f6f7;
         }
-        #but:hover{
-            background-color: black;
-            color: white;
-        }
-        #b1{
-            width: 110px;
-            height: 37px;
-            font-size: 15px;
-            border: 2px solid black;
-            border-radius: 5px;
-            margin: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 80px;
-            font-family:'Times New Roman', Times, serif;
 
-        }
-        #b1:hover{
-            background-color: black;
-            color: white;
-        }
         
-         #b2{
-            width: 100px;
-            height: 30px;
+        #div1 {
+            width: 90%;
+            max-width: 360px;
+            margin-top: 80px;
+            padding: 25px;
+            border: 2px solid black;
+            border-radius: 6px;
+            background-color: rgb(251, 255, 255);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+       
+        #div3 {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            width: 100%;
+            height: 38px;
+            padding-left: 8px;
+            border-radius: 4px;
+            border: 1px solid black;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: black;
+        }
+
+       
+        #b1 {
+            width: 100%;
+            height: 40px;
             font-size: 15px;
+            font-weight: bold;
             border: 2px solid black;
             border-radius: 5px;
-            margin: 5px;
-            margin-left: 720px;
-            font-weight: bold;
             cursor: pointer;
-            font-family:'Times New Roman', Times, serif;
-
+            background-color: white;
         }
-        #b2:hover{
+
+        #b1:hover {
             background-color: black;
             color: white;
         }
-       
-    </style>
 
+      
+        .error {
+            text-align: center;
+            margin-top: 15px;
+            color: rgb(200, 12, 12);
+        }
+
+        
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        #but, #b2 {
+            width: 180px;
+            height: 38px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #but:hover, #b2:hover {
+            background-color: black;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            #div1 {
+                margin-top: 50px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
- <form method="post"  action="/login" >
-    <div id="div1">
-        
-        <div id="div2">
-          <h1 style="text-align: center;">Login</h1>
-        </div>
+    <form method="post" action="/login">
+        <div id="div1">
 
-        <div id="div3" >
-          
-            <input type="text" name="username" placeholder="Enter your name">
-            <input type="password" name="password" placeholder="Enter Your password" >
-           <br>
-            <button id="b1" type="submit" value="Login">Login</button>
+            <h1>Login</h1>
+
+            <div id="div3">
+                <input type="text" name="username" placeholder="Enter your name" required>
+                <input type="password" name="password" placeholder="Enter your password" required>
+                <button id="b1" type="submit">Login</button>
+            </div>
+
         </div>
-        
-    </div>
     </form>
 
-    
-    <div style="text-align: center;">
-        {% if err %}
-        <h3 style="color: rgb(200, 12, 12);">{{err}}</h3>
-        {% endif %}
-       
+    {% if err %}
+    <div class="error">
+        <h3>{{ err }}</h3>
+    </div>
+    {% endif %}
+
+    <div class="bottom-buttons">
+        <a href="/"><button id="but">Go Back To Home Page</button></a>
+        <a href="/signup"><button id="b2">Sign Up</button></a>
     </div>
 
-    <div>
-    <a href="/"><button id="but">Go Back To Home Page </button></a>
-     </div>
-
-     <div>
-        
-        <a href="/signup"><button id="b2">Sign Up</button></a>
-
-     </div>
-     
 </body>
 </html>
